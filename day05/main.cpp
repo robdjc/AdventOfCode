@@ -57,7 +57,50 @@ void print_mdp(vector<my_data_point> vec_mdps)
     }
 }
 
-int part1()
+void add_seeds(const int part, const string& seeds, vector<unsigned int>& vec_seeds)
+{
+    string seed_no;
+    stringstream ss(seeds);
+
+    if(part == 1)
+    {
+        while(getline(ss, seed_no, ' '))
+        {
+            if (!seed_no.empty())
+            {
+                // cout << seed_no << endl;
+                vec_seeds.push_back(stoul(seed_no));
+            }
+        }        
+    }
+    else
+    {
+        unsigned int start = 0;
+
+        while(getline(ss, seed_no, ' '))
+        {
+            if (!seed_no.empty())
+            {
+                if (start == 0)
+                {
+                    start = stoul(seed_no);
+                }
+                else
+                {
+                    unsigned int max = start + stoul(seed_no);
+                    for ( int i = start; i < max; i++ )
+                    {
+                        vec_seeds.push_back(i);
+                    }
+                    
+                    start = 0;
+                }
+            }
+        }        
+    }
+}
+
+int crunch_data(const int part)
 {
     ifstream infile("input.txt");
 
@@ -81,17 +124,7 @@ int part1()
         {
             name = line.substr(0, index);
             string seeds = line.substr(index+1);
-
-            string seed_no;
-            stringstream ss(seeds);
-            while(getline(ss, seed_no, ' '))
-            {
-                if (!seed_no.empty())
-                {
-                    // cout << seed_no << endl;
-                    vec_seeds.push_back(stoul(seed_no));
-                }
-            }
+            add_seeds(part, seeds, vec_seeds);
         }
         else
         {
@@ -246,7 +279,9 @@ unsigned int part2()
 int main()
 {
     // part1();
-    cout << "Part 1: " << part1() << endl;
-    // cout << "Part 2: " << part2() << endl;
+    cout << "Part 1: " << crunch_data(1) << endl;
+
+    // took two hours to run :-(
+    cout << "Part 2: " << crunch_data(2) << endl;
     return 0;
 }
