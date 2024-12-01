@@ -8,53 +8,44 @@ def get_data(filename):
         data = f.read().splitlines()
     return data
 
-def get_lists():
-    pass
+def get_lists(data):
+    l1 = []
+    l2 = []
+
+    for item in data:
+        tp = item.split()
+        l1.append(int(tp[0]))
+        l2.append(int(tp[1]))
+
+    return l1, l2
 
 def part1():
     data = get_data("input.txt")
 
-    l1 = []
-    l2 = []
-
-    total = 0
-    for item in data:
-        tp = item.split()
-        l1.append(tp[0])
-        l2.append(tp[1])
+    l1, l2 = get_lists(data)
 
     l1.sort()
     l2.sort()
 
-    print (l1)
-    print (l2)
+    total = 0
+
     j = 0
     for i in l1:
-        # print (int(i))
-        # print (int(l2[j]))
-        print(abs(int(i) - int(l2[j])))
-        total += abs(int(i) - int(l2[j]))
+        print(abs(i - l2[j]))
+        total += abs(i - l2[j])
         j+= 1
 
     return total
 
 def part2():
-    total = 0
 
     data = get_data("input.txt")
 
-    l1 = []
-    l2 = []
+    l1, l2 = get_lists(data)
 
     total = 0
-    for item in data:
-        tp = item.split()
-        l1.append(tp[0])
-        l2.append(tp[1])
 
     for i in l1:
-        # print(i)
-        # print(l2.count(i))
         j = int(i) * l2.count(i)
         total += j
 
