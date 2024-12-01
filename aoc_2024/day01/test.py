@@ -20,6 +20,9 @@ def get_lists(data):
     return l1, l2
 
 def part1():
+
+
+    
     data = get_data("input.txt")
 
     l1, l2 = get_lists(data)
@@ -31,7 +34,6 @@ def part1():
 
     j = 0
     for i in l1:
-        print(abs(i - l2[j]))
         total += abs(i - l2[j])
         j+= 1
 
@@ -45,10 +47,21 @@ def part2():
 
     total = 0
 
-    for i in l1:
-        j = int(i) * l2.count(i)
-        total += j
+    all_lookups = {}
 
+    for i in l1:
+
+        # score = how many times l1 item appears in l2
+        multiplier = all_lookups.get(i)
+        if multiplier is None:
+            multiplier = l2.count(i)
+            all_lookups[i] = multiplier
+        else:
+            print("lookup worked")
+
+        j = int(i) * multiplier
+        total += j
+    
     return total
 
 def main():

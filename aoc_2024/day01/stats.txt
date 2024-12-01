@@ -1,0 +1,45 @@
+AdventOfCode/aoc_2024/day01 on  main via 🐍 v3.8.10 
+❯ time ./test.py 
+Part 1: 2264607
+Part 2: 19457120
+
+real    0m0.120s
+user    0m0.060s
+sys     0m0.029s
+
+AdventOfCode/aoc_2024/day01 on  main via 🐍 v3.8.10 
+❯ time ./test.py 
+Part 1: 2264607
+Part 2: 19457120
+
+real    0m0.144s
+user    0m0.066s
+sys     0m0.054s
+
+AdventOfCode/aoc_2024/day01 on  main via 🐍 v3.8.10 
+❯ time ./test.py 
+Part 1: 2264607
+Part 2: 19457120
+
+real    0m0.131s
+user    0m0.059s
+sys     0m0.046s
+
+AdventOfCode/aoc_2024/day01 on  main via 🐍 v3.8.10 
+❯ time ./test.py 
+Part 1: 2264607
+Part 2: 19457120
+
+real    0m0.153s
+user    0m0.072s
+sys     0m0.053s
+
+AdventOfCode/aoc_2024/day01 on  main via 🐍 v3.8.10 
+❯ time ./test.py 
+Part 1: 2264607
+Part 2: 19457120
+
+real    0m0.117s
+user    0m0.053s
+sys     0m0.029s
+
