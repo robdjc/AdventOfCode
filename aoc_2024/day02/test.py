@@ -78,6 +78,7 @@ def main():
     print ("Part 1:", total)
     
     # 324
+    # total=1000, good=252, bad=748, good when removing one element 72
     total = part2()
     print ("Part 2:", total)
 
