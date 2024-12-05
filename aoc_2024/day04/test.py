@@ -9,7 +9,7 @@ def get_data(filename):
         data = f.read().splitlines()
     return data
 
-def check(i, j, r, b, data):
+def check1(i, j, r, b, data):
     # print("Found X", i, j, r, b)
 
     total = 0
@@ -81,7 +81,44 @@ def part1():
     for i in range(len(data)):
         for j in range(len(data[i])):
             if data[i][j] == 'X':
-                total += check(i, j, r, b, data)
+                total += check1(i, j, r, b, data)
+
+    return total
+
+def check2(i, j, r, b, data):
+    # print("Found X", i, j, r, b)
+
+    total = 0
+
+    tl = ""
+    tr = ""
+    bl = ""
+    br = ""
+
+    # up and left
+    if i >= 1 and j >= 1:
+        tl = data[i-1][j-1]
+        # print ("Check up and left", tl)
+
+    # up and right
+    if i >= 1 and j <= (r - 2):
+        tr = data[i-1][j+1]
+        # print ("Check up and right", s)
+
+    # down and left
+    if (i + 1) < b and j >= 1:
+        bl = data[i+1][j-1]
+        # print ("Check down and left", bl)
+
+    # down and right
+    if (i + 1) < b and j <= (r - 2):
+        br = data[i+1][j+1]
+        # print ("Check down and right", br)
+
+    s1 = tl + "A" + br
+    s2 = tr + "A" + bl
+    if (s1 in ['SAM','MAS']) and (s2 in ['SAM','MAS']):
+        total += 1
 
     return total
 
@@ -90,17 +127,22 @@ def part2():
 
     data = get_data("input.txt")
 
-    for item in data:
-        pass
+    r = len(data)
+    b = len(data[0])
+
+    for i in range(len(data)):
+        for j in range(len(data[i])):
+            if data[i][j] == 'A':
+                total += check2(i, j, r, b, data)
 
     return total
 
 def main():
-    # 
+    # 2414
     total = part1()
     print ("Part 1:", total)
     
-    # 
+    # 1871
     total = part2()
     print ("Part 2:", total)
 
